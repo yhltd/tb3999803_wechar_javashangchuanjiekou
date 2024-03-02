@@ -1,0 +1,32 @@
+server:
+  port: 9089
+  max-http-header-size: 100000
+  tomcat:
+    max-http-form-post-size: -1
+web:
+  upload-path: D:/profile
+spring:
+  servlet:
+    multipart:
+      max-request-size: 150MB
+      max-file-size: 150MB
+  profiles:
+    active: dev
+  datasource:
+    druid:
+      max-wait: 10000
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://yhocn.cn/test?autoReconnect=true&allowMultiQueries=true&characterEncoding=utf8&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+    username: root
+    password: Lyh07910
+  mvc:
+    view:
+      suffix: .html
+    static-path-pattern: /**
+  web:
+    resources:
+      static-locations: file:${web.upload-path},classpath:/templates/,classpath:/static/
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
